@@ -1,10 +1,13 @@
+import 'package:amberjack_template/Global&Constants/DeviceDetailsConstants.dart';
 import 'package:amberjack_template/Global&Constants/globalsAndConstants.dart';
+import 'package:amberjack_template/components/tileWidgets.dart';
 import 'package:amberjack_template/screens/helpScreen.dart';
 import 'package:amberjack_template/screens/onBoarding.dart';
 import 'package:amberjack_template/screens/profileEditScreen.dart';
 import 'package:amberjack_template/screens/settingScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'homeScreen';
@@ -14,76 +17,150 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  final List<String> names = <String>[
+    'Aby',
+    'Aish',
+    'Ayan',
+    'Ben',
+    'Bob',
+    'Charlie',
+    'Cook',
+    'Carline'
+  ];
+  final List<int> msgCount = <int>[2, 0, 10, 6, 52, 4, 0, 2];
+
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: Text("Welcome"),
-        leading: IconButton(
-          icon: Icon(Icons.help),
-          onPressed: () => Navigator.pushNamed(context, HelpScreen.id),
+        // extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          title: Text("Welcome"),
+//        leading: IconButton(
+//          icon: Icon(Icons.help),
+//          onPressed: () => Navigator.pushNamed(context, HelpScreen.id),
+//        ),
+          //   backgroundColor: kAppBarColor,
         ),
-        //   backgroundColor: kAppBarColor,
-      ),
-      body: Builder(builder: (BuildContext context) {
-        return SafeArea(
-          child: ListView(
-            children: [
-              Padding(
+        drawer: AppDrawer(),
+        body: ListView.builder(
+            padding: const EdgeInsets.all(4),
+            itemCount: nearbyQs.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
                 padding: const EdgeInsets.all(8.0),
-                // child: Image.asset('assets/images/banner.png'),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              ListTile(
-                title: Text('View Settings Screen'),
-                leading: Icon(
-                  Icons.settings,
-                  color: kIconColor,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(
+                      color: Colors.black,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${nearbyQs[index].companyName} ',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${nearbyQs[index].address}',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(left: 10.0, right: 10.0),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+//                              style: ElevatedButton.styleFrom(
+//                                  primary: Colors.blueAccent),
+                              onPressed: () {
+                                // On button presed
+                              },
+                              child: const Text("Check In"),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-                trailing: Icon(Icons.chevron_right),
-                onTap: () {
-                  Navigator.pushNamed(context, SettingScreen.id);
-                },
-              ),
-              ListTile(
-                title: Text('View Help Screen'),
-                leading: Icon(
-                  Icons.help,
-                  color: kIconColor,
-                ),
-                trailing: Icon(Icons.chevron_right),
-                onTap: () {
-                  Navigator.pushNamed(context, HelpScreen.id);
-                },
-              ),
-              ListTile(
-                title: Text('On Boarding Screens'),
-                leading: Icon(
-                  Icons.category,
-                  color: kIconColor,
-                ),
-                trailing: Icon(Icons.chevron_right),
-                onTap: () {
-                  Navigator.pushNamed(context, OnBoardingPage.id);
-                },
-              ),
-              ListTile(
-                title: Text('Edit my Profile'),
-                leading: Icon(
-                  Icons.person,
-                  color: kIconColor,
-                ),
-                trailing: Icon(Icons.chevron_right),
-                onTap: () {
-                    Navigator.pushNamed(context, ProfileEditPage.id);
-                },
-              )
-            ],
+              );
+            }));
+  }
+}
+
+class AppDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          createHeader(),
+          createDrawerItem(
+            icon: Icons.account_box,
+            text: 'Update Profile',
+            onTap: () => Navigator.pushNamed(context, ProfileEditPage.id),
           ),
-        );
-      }),
+          createDrawerItem(
+            icon: Icons.help,
+            text: 'Help',
+            onTap: () => Navigator.pushNamed(context, HelpScreen.id),
+          ),
+          createDrawerItem(
+            icon: Icons.category,
+            text: 'Introduction',
+            onTap: () => Navigator.pushNamed(context, OnBoardingPage.id),
+          ),
+          createDrawerItem(
+            icon: Icons.settings,
+            text: 'Settings',
+            onTap: () => Navigator.pushNamed(context, SettingScreen.id),
+          ),
+          /*
+         onTap: () =>
+
+          */
+          Divider(),
+          createDrawerItem(
+            icon: Icons.share,
+            text: 'Tell a Friend',
+            onTap: () => {
+              if (userDevice.isIOS)
+                {
+                  Share.share('Download our cool new App' + appName,
+                      subject: 'Check Out ' + appName + '\n  ' + appleStoreURL)
+                }
+              else
+                {
+                  Share.share('Download our cool new App' + appName,
+                      subject:
+                          'Check Out ' + appName + '\n  ' + androidStoreURL)
+                }
+            },
+          ),
+          createDrawerItem(
+              icon: Icons.email, text: 'Contact Us', onTap: () => sendemail()),
+          createDrawerItem(
+              icon: Icons.bug_report,
+              text: 'Report an issue',
+              onTap: () => sendemail()),
+          ListTile(
+              title: Text(appName +
+                  //   " Release " +
+                  packageInfo.version +
+                  "(" +
+                  packageInfo.buildNumber +
+                  ")" +
+                  "\nDeveloped by " +
+                  companyName)),
+        ],
+      ),
     );
   }
 }

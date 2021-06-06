@@ -1,13 +1,15 @@
 PODS:
-  - connectivity (0.0.1):
+  - connectivity_plus (0.0.1):
     - Flutter
     - Reachability
   - device_info_plus (0.0.1):
     - Flutter
   - Flutter (1.0.0)
-  - "geolocator (5.3.2+2)":
+  - geocoder (0.0.1):
     - Flutter
-  - "location_permissions (3.0.0+1)":
+  - geolocator (6.2.0):
+    - Flutter
+  - image_picker (0.0.1):
     - Flutter
   - open_appstore (0.0.1):
     - Flutter
@@ -24,11 +26,12 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - connectivity (from `.symlinks/plugins/connectivity/ios`)
+  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - Flutter (from `Flutter`)
+  - geocoder (from `.symlinks/plugins/geocoder/ios`)
   - geolocator (from `.symlinks/plugins/geolocator/ios`)
-  - location_permissions (from `.symlinks/plugins/location_permissions/ios`)
+  - image_picker (from `.symlinks/plugins/image_picker/ios`)
   - open_appstore (from `.symlinks/plugins/open_appstore/ios`)
   - package_info (from `.symlinks/plugins/package_info/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
@@ -41,16 +44,18 @@ SPEC REPOS:
     - Reachability
 
 EXTERNAL SOURCES:
-  connectivity:
-    :path: ".symlinks/plugins/connectivity/ios"
+  connectivity_plus:
+    :path: ".symlinks/plugins/connectivity_plus/ios"
   device_info_plus:
     :path: ".symlinks/plugins/device_info_plus/ios"
   Flutter:
     :path: Flutter
+  geocoder:
+    :path: ".symlinks/plugins/geocoder/ios"
   geolocator:
     :path: ".symlinks/plugins/geolocator/ios"
-  location_permissions:
-    :path: ".symlinks/plugins/location_permissions/ios"
+  image_picker:
+    :path: ".symlinks/plugins/image_picker/ios"
   open_appstore:
     :path: ".symlinks/plugins/open_appstore/ios"
   package_info:
@@ -65,11 +70,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher/ios"
 
 SPEC CHECKSUMS:
-  connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
+  connectivity_plus: f5e5e0b894ec1187bfab9816d6c2f034da8d46da
   device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  geolocator: f7622e0e7e2a24718285b73916d60c4a54b9f5b6
-  location_permissions: 7e0f9aa0f60deb8ff93ddf0e2a164c7e8197bc94
+  geocoder: 3cfab70531a0b367e917bafe82df4c30f6d4c45a
+  geolocator: f5e3de65e241caba7ce3e8a618803387bda73384
+  image_picker: 50e7c7ff960e5f58faa4d1f4af84a771c671bc4a
   open_appstore: 4eddfae38848002fdde8d42e1734d16cb34439de
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c

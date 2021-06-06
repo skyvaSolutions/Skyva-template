@@ -1,5 +1,6 @@
+import 'package:amberjack_template/services/userServices.dart';
 UserSetting userSettings = UserSetting();
-
+UserInfo userInfo;
 class UserSetting {
   IntKey numUsages = IntKey(0, "numUsages");
   StringKey deviceID = StringKey(null, "deviceID");

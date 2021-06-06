@@ -1,4 +1,3 @@
-import 'package:amberjack_template/Global&Constants/globalsAndConstants.dart';
 import 'package:amberjack_template/Providers/ThemeProvider.dart';
 import 'package:amberjack_template/screens/helpScreen.dart';
 import 'package:amberjack_template/screens/homeScreen.dart';
@@ -27,9 +26,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App Template',
       debugShowCheckedModeBanner: false,
-      themeMode: _prov.DarkMode==true?ThemeMode.dark:ThemeMode.light,
-      theme: FlexColorScheme.light(scheme: FlexScheme.deepBlue).toTheme,
-      darkTheme: FlexColorScheme.dark(scheme: FlexScheme.deepBlue
+      themeMode: _prov.DarkMode == true ? ThemeMode.dark : ThemeMode.light,
+      theme: FlexColorScheme.light(scheme: FlexScheme.hippieBlue).toTheme,
+      darkTheme: FlexColorScheme.dark(scheme: FlexScheme.hippieBlue
               //  fontFamily: 'Georgia',
               )
           .toTheme,

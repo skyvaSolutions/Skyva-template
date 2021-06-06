@@ -6,7 +6,9 @@ import 'package:amberjack_template/screens/onBoarding.dart';
 import 'package:amberjack_template/services/deviceInfoService.dart';
 import 'package:amberjack_template/services/localStorage.dart';
 import 'package:amberjack_template/services/locationServices.dart';
+import 'package:amberjack_template/services/qAPIServices.dart';
 import 'package:amberjack_template/services/releaseStatusService.dart';
+import 'package:amberjack_template/services/userServices.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,6 +90,10 @@ class _SplashScreenState extends State<SplashScreen> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(locationErrorSnackBar);
     }
+    UserService userService = UserService();
+    await userService.getUserInfoFromServer();
+    GetNearbyQService getNearbyQService = GetNearbyQService();
+    await getNearbyQService.getNearbyQueues();
     if (userSettings.numUsages.value < 2) {
       Navigator.pushReplacementNamed(context, OnBoardingPage.id);
     } else {

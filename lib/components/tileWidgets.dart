@@ -206,3 +206,41 @@ Future showAlert(BuildContext context, String title, String body) {
 //    ],
 //  );
 //}
+Widget createDrawerItem(
+    {IconData icon, String text, GestureTapCallback onTap}) {
+  return ListTile(
+    title: Row(
+      children: <Widget>[
+        Icon(icon),
+        Padding(
+          padding: EdgeInsets.only(left: 8.0),
+          child: Text(text),
+        )
+      ],
+    ),
+    onTap: onTap,
+  );
+}
+
+Widget createHeader() {
+  return DrawerHeader(
+      margin: EdgeInsets.zero,
+      padding: EdgeInsets.zero,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              fit: BoxFit.fill, image: AssetImage('assets/images/wait1.png'))),
+      child: Stack(children: <Widget>[
+        Positioned(
+            bottom: 0.0,
+            // left: 16.0,
+            child: Center(
+              child: Text("",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.teal.shade700,
+                      fontSize: 12.0,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.w500)),
+            )),
+      ]));
+}
