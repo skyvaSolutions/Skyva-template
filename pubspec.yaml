@@ -32,7 +32,6 @@ dependencies:
   dio:
   connectivity_plus:
   flex_color_scheme: ^2.1.1
-
   ## hive:
   uuid:
   flutter_device_type:
