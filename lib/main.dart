@@ -1,4 +1,5 @@
 import 'package:amberjack_template/Providers/ThemeProvider.dart';
+import 'package:amberjack_template/Providers/searchProvider.dart';
 import 'package:amberjack_template/screens/helpScreen.dart';
 import 'package:amberjack_template/screens/homeScreen.dart';
 import 'package:amberjack_template/screens/onBoarding.dart';
@@ -19,6 +20,8 @@ void main() async {
   // print("firebase initialized, ${DateTime.now()}");
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (context) => ThemeProvider()),
+    ChangeNotifierProvider(create: (context) => searchProvider()),
+
 
   ], child: MyApp()));
 }

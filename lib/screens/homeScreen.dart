@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:amberjack_template/Global&Constants/DeviceDetailsConstants.dart';
 import 'package:amberjack_template/Global&Constants/globalsAndConstants.dart';
+import 'package:amberjack_template/components/businessWidget.dart';
 import 'package:amberjack_template/components/tileWidgets.dart';
 import 'package:amberjack_template/screens/Error.page.dart';
 import 'package:amberjack_template/screens/helpScreen.dart';
@@ -73,49 +74,60 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      elevation: 10,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${nearbyQs[index].companyName} ',
-                              textAlign: TextAlign.left,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '${nearbyQs[index].address}',
-                              textAlign: TextAlign.left,
-                              style: GoogleFonts.poppins(fontSize: 15),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 10.0, right: 10.0),
-                              child: SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-//                              style: ElevatedButton.styleFrom(
-//                                  primary: Colors.blueAccent),
-                                  onPressed: () {
-                                    // On button presed
-                                  },
-                                  child: const Text("Check In"),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                    child: BusinessWidget(name: nearbyQs[index].companyName,address: nearbyQs[index].address,),
                   );
                 }),
           ),
         ));
   }
 }
+
+// class TestWidget extends StatelessWidget {
+//   const TestWidget({
+//     Key key,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Card(
+//       elevation: 10,
+//       child: Padding(
+//         padding: const EdgeInsets.all(8.0),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Text(
+//               '${nearbyQs[index].companyName} ',
+//               textAlign: TextAlign.left,
+//               style: GoogleFonts.poppins(
+//                   fontSize: 18, fontWeight: FontWeight.bold),
+//             ),
+//             Text(
+//               '${nearbyQs[index].address}',
+//               textAlign: TextAlign.left,
+//               style: GoogleFonts.poppins(fontSize: 15),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.only(
+//                   left: 10.0, right: 10.0),
+//               child: SizedBox(
+//                 width: double.infinity,
+//                 child: ElevatedButton(
+// //                              style: ElevatedButton.styleFrom(
+// //                                  primary: Colors.blueAccent),
+//                   onPressed: () {
+//                     // On button presed
+//                   },
+//                   child: const Text("Check In"),
+//                 ),
+//               ),
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class AppDrawer extends StatelessWidget {
   @override
