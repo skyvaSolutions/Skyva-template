@@ -42,14 +42,14 @@ class _BusinessWidgetState extends State<BusinessWidget> {
                       left: 20,
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.11,
-                        width: MediaQuery.of(context).size.width * 0.24,
+                        width: MediaQuery.of(context).size.width * 0.21,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.red),
                             borderRadius: BorderRadius.circular(100),
                             image: DecorationImage(
                                 scale: 1,
-                                image: NetworkImage("https://lh3.googleusercontent.com/proxy/XeYqOkWfqna2gTL2KA29pyDoaAhopNlgiesobr9G2TuOFGOihAQFm5LpE4ziec9gOFTE2UeTmfpb-cAL_ep2zeycad_xp3c"),
+                                image: NetworkImage("https://image.shutterstock.com/image-vector/medical-care-logo-design-260nw-1281695074.jpg"),
                                 fit: BoxFit.scaleDown)),
                       ),
                     )
